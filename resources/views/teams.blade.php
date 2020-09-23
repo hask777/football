@@ -2,6 +2,7 @@
     @foreach($competition_teams as $team)
         <form action="{{ route('showteams', $team['TeamId'])}}" method="get">        
                 <input type="hidden" name="team_id" value="{{$team['TeamId']}}">
+                <input type="hidden" name="venue_id" value="{{$team['VenueId']}}">
                 <button type="submit">{{$team['Name']}}</button>
                 <br>    
         </form>

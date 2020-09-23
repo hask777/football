@@ -20,7 +20,7 @@ class TeamsController extends Controller
         
         $competition = Http::withHeaders(['Ocp-Apim-Subscription-Key'=>'f7b0c7419d204f299f59e646b45ca563'])->get('https://api.sportsdata.io/v3/soccer/scores/json/CompetitionDetails/' . $comp_id)->json();
 
-        // dump($competition);
+        dump($competition);
 
         $competition_teams = $competition['Teams'];
         $competition_games = $competition['Games'];
@@ -62,11 +62,16 @@ class TeamsController extends Controller
      */
     public function show($id)
     {
+
         if(!empty($_GET['team_id'])){  
             $team_id = $_GET['team_id'];      
         }
 
-        dump($team_id);
+        if(!empty($_GET['venue_id'])){  
+            $venue_id = $_GET['venue_id'];      
+        }
+
+        dump('venue' . $venue_id);
 
         return view('teams.show');
     }
