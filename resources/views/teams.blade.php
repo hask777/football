@@ -1,11 +1,11 @@
 <div>
-    <form action="" method="get">
-        @foreach($competition_teams as $team)
-            <input type="hidden" name="team_id" value="{{$team['TeamId']}}">
-            <button type="submit">{{$team['Name']}}</button>
-            <br>
-        @endforeach
-    </form>
+    @foreach($competition_teams as $team)
+        <form action="{{ route('showteams', $team['TeamId'])}}" method="get">        
+                <input type="hidden" name="team_id" value="{{$team['TeamId']}}">
+                <button type="submit">{{$team['Name']}}</button>
+                <br>    
+        </form>
+    @endforeach
 </div>
 
 
