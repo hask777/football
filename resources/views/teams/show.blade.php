@@ -90,3 +90,17 @@
     Team Nick 3: {{$team_nickname3}}
 </div>
 
+<h1>Players</h1>
+
+
+
+
+@foreach ($team as $player)
+    <form action="{{route('player'), $player['PlayerId']}}" method="get">
+        <input type="hidden" name="player_id" value="{{$player['PlayerId']}}">
+        <button type="submit">{{$player['PlayerName']}}</button>
+        <br>
+    </form>
+@endforeach 
+
+

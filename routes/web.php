@@ -17,3 +17,4 @@ Route::get('/', 'AreasController@index');
 Route::get('/area/{id}', 'AreasController@show')->name('show');
 Route::get('/teams', 'TeamsController@index')->name('teams');
 Route::get('/teams/{id}', 'TeamsController@show')->name('showteams');
+Route::get('/player', 'PlayersCntroller@index')->name('player');

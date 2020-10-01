@@ -1,6 +1,11 @@
 @extends('main')
 @section('content')
 
+<form action="{{ route('teams') }}" method="get">
+    <input type="hidden" name="comp_id" value="{{ $comp_id }}">
+    <button type="submit">Teams</button>
+</form>
+
 <h1 class="mb-1 mt-1">Area:</h1>
 
 <div>
@@ -100,9 +105,6 @@
     Current round: {{$round_current_round}} --}}
 </div>
 
-<form action="{{ route('teams') }}" method="get">
-    <input type="hidden" name="comp_id" value="{{ $comp_id }}">
-    <button type="submit">Teams</button>
-</form>
+
 
 @endsection

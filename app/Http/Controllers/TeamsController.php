@@ -78,12 +78,12 @@ class TeamsController extends Controller
         
 
         $team = Http::withHeaders(['Ocp-Apim-Subscription-Key'=>$last_key])->get('https://api.sportsdata.io/v3/soccer/scores/json/MembershipsByTeam/'. $team_id)->json();
-        dump($team);
+        // dd($team);
 
         foreach($team as $player){
             $player_id = $player['PlayerId'];
             $player_name = $player['PlayerName'];
-            // dump($player['PlayerName']);
+            // dump($player_name . ':' . $player_id);
         }
 
         $player = Http::withHeaders(['Ocp-Apim-Subscription-Key'=>$last_key])->get('https://api.sportsdata.io/v3/soccer/scores/json/Player/'. $player_id)->json();
@@ -116,6 +116,7 @@ class TeamsController extends Controller
             'team_wiki' => $team_wiki,
             'team_wikimarkurl' => $team_wikimarkurl,
             'team_globalteamId' => $team_globalteamId,
+            'team' => $team
         ]);
     }
 

@@ -29,35 +29,6 @@
                 <input type="hidden" name="team_wiki" value="{{$team['WikipediaLogoUrl']}}">
                 <input type="hidden" name="team_wikimarkurl" value="{{$team['WikipediaWordMarkUrl']}}">
                 <input type="hidden" name="team_globalteamId" value="{{$team['GlobalTeamId']}}">
-                @php
-                    // Team Players is array of this team players
-                    
-                    $plaeyrs_array = [];
-                    // echo '<pre>'; 
-                    // var_dump($team['Players']);
-                    // print_r($team['Players']); 
-                    // echo '</pre>';
-
-                    foreach($team['Players'] as $player){
-                        
-                            // dump($player);
-                            // echo '<pre>'; 
-                            // var_dump($player_name['FirstName']);
-                            // print_r($player_name['FirstName']); 
-                            // echo '</pre>';
-                            $player_name = $player['FirstName'];
-                            $player_id = $player['PlayerId'];
-                            $plaeyrs_array[]= $player_name;
-
-                            
-                        
-                    }
-                    // dump($plaeyrs_array);
-                @endphp
-                
-               
-                    {{-- <input type="hidden" name="player_name[]" value="{{$plaeyrs_array}}"> --}}
-                
                 
                 <button type="submit">{{$team['Name']}}</button>
                 <br>    
