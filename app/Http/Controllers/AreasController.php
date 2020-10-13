@@ -38,7 +38,7 @@ class AreasController extends Controller
 
         // dd($areas);
         
-        return  view('area', 
+        return  view('areas', 
             [
                 'areas' => $areas,
             ]
@@ -74,11 +74,10 @@ class AreasController extends Controller
      */
     public function show($id)
     {
-
         $old_key = 'f7b0c7419d204f299f59e646b45ca563';
         $last_key = '462593266ebe41aea83378076b88c07d';
 
-        $areasArray = Http::withHeaders(['Ocp-Apim-Subscription-Key'=>$last_key])->get('https://api.sportsdata.io/v3/soccer/scores/json/Areas')->json();
+        // $areasArray = Http::withHeaders(['Ocp-Apim-Subscription-Key'=>$last_key])->get('https://api.sportsdata.io/v3/soccer/scores/json/Areas')->json();
 
         include 'inc/areas/http.php'; 
         // include 'inc/areas/dump.php';
@@ -86,7 +85,7 @@ class AreasController extends Controller
         // League Details   
         $competition = Http::withHeaders(['Ocp-Apim-Subscription-Key'=>$last_key])->get('https://api.sportsdata.io/v3/soccer/scores/json/CompetitionDetails/' . $comp_id)->json();
 
-        // dump($competition);
+        dump($competition);
 
             $comp_id = $competition['CompetitionId'];
             $comp_item_name = $competition['Name'];
@@ -110,30 +109,11 @@ class AreasController extends Controller
             //     dump($comp_item_season);
             // }
         
-        // $competitionMemberByTeam = Http::withHeaders(['Ocp-Apim-Subscription-Key'=>'f7b0c7419d204f299f59e646b45ca563'])->get('https://api.sportsdata.io/v3/soccer/scores/json/MembershipsByTeam/858')->json();
+        
 
-        // $playersByTeam = Http::withHeaders(['Ocp-Apim-Subscription-Key'=>'f7b0c7419d204f299f59e646b45ca563'])->get('https://api.sportsdata.io/v3/soccer/scores/json/PlayersByTeam/858')->json();
-
-        // $seasonTeam = Http::withHeaders(['Ocp-Apim-Subscription-Key'=>'f7b0c7419d204f299f59e646b45ca563'])->get('https://api.sportsdata.io/v3/soccer/scores/json/SeasonTeams/110')->json();
-
-        // $standings = Http::withHeaders(['Ocp-Apim-Subscription-Key'=>'f7b0c7419d204f299f59e646b45ca563'])->get('https://api.sportsdata.io/v3/soccer/scores/json/Standings/{roundid}')->json();
-
-        // $venues = Http::withHeaders(['Ocp-Apim-Subscription-Key'=>'f7b0c7419d204f299f59e646b45ca563'])->get('https://api.sportsdata.io/v3/soccer/scores/json/Venues')->json();
-
-        // $gamesByDate = Http::withHeaders(['Ocp-Apim-Subscription-Key'=>'f7b0c7419d204f299f59e646b45ca563'])->get('https://api.sportsdata.io/v3/soccer/scores/json/GamesByDate/2020-09-20')->json();
-
-        // $shedule = Http::withHeaders(['Ocp-Apim-Subscription-Key'=>'f7b0c7419d204f299f59e646b45ca563'])->get('https://api.sportsdata.io/v3/soccer/scores/json/Schedule/2')->json();
-
-        // $teamGameStatsByDate = Http::withHeaders(['Ocp-Apim-Subscription-Key'=>'f7b0c7419d204f299f59e646b45ca563'])->get('https://api.sportsdata.io/v3/soccer/scores/json/TeamGameStatsByDate/2020-09-19')->json();
-
-        // $teamSeasonStats = Http::withHeaders(['Ocp-Apim-Subscription-Key'=>'f7b0c7419d204f299f59e646b45ca563'])->get('https://api.sportsdata.io/v3/soccer/odds/json/LiveGameOddsByDate/2020-09-7')->json();
-
-        // dump($teamSeasonStats);
-
-        return view('show', 
+        return view('areas.show', 
             [
                 'comp_id' => $comp_id,
-                'areasArray' => $areasArray,
                 'area_id' => $area_id,
                 'area_name' => $area_name,
                 'comp_name' => $comp_name,

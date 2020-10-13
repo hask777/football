@@ -98,7 +98,7 @@
             <input type="hidden" name="round_current_week" value="{{ $round_current_week }}">
             <input type="hidden" name="round_current_round" value="{{ $round_current_round }}">
             
-            <button type="submit">{{ $area['Name'] }}</button>
+            <button type="submit" class="area_button bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded m-2">{{ $area['Name'] }}</button>
         </form>
     @endforeach
 </div>

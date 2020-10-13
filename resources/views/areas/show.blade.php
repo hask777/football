@@ -6,7 +6,7 @@
     <button type="submit">Teams</button>
 </form>
 
-<h1 class="mb-1 mt-1">Area:</h1>
+<h1 class="mb-1 mt-1 text-4xl">Area:</h1>
 
 <div>
     Area Id: {{$area_id}}
