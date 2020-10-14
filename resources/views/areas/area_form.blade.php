@@ -16,24 +16,28 @@
         @endforeach
     </form> --}}
 
-    <div class="area_button bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white text-center py-2 px-4 border border-blue-500 hover:border-transparent rounded m-2">{{ $area['Name'] }}</div>
+    <div class="area_button bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white text-center py-2 px-4 border border-blue-500 hover:border-transparent rounded m-2">{{ $area['Name'] }}
 
-    @foreach($area['Competitions'] as $competition)
+        @foreach($area['Competitions'] as $competition)
 
-        <div class="area_comp hidden">
-            <a href="{{ route('show', $competition['CompetitionId'])}}">
-                {{$competition['Name']}}
-            </a>     
-        </div>
-       
-    @endforeach
+            <div class="area_comp hidden">
+                <a href="{{ route('show', $competition['CompetitionId'])}}">
+                    {{$competition['Name']}}
+                </a>     
+            </div>
+        
+        @endforeach
 
+    </div>
 @endforeach
 
 <script>
     jQuery(document).ready(function ($) {
-        $('.area_button').on('click', function(){
-		$('.area_comp').slideToggle();		
-	});
+        $('.area_button').on('click', function(event){
+            var target = $( event.target );
+            target.children().slideToggle();
+
+            console.log(event.target.innerHTML);	
+        });
     });
 </script>

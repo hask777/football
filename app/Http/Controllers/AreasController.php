@@ -67,22 +67,15 @@ class AreasController extends Controller
         $old_key = 'f7b0c7419d204f299f59e646b45ca563';
         $last_key = '462593266ebe41aea83378076b88c07d';
 
-        // $areasArray = Http::withHeaders(['Ocp-Apim-Subscription-Key'=>$last_key])->get('https://api.sportsdata.io/v3/soccer/scores/json/Areas')->json();
-
-        // dump($competitions);
-
         // include 'inc/areas/http.php'; 
-        // include 'inc/areas/dump.php';
 
         // League Details   
         $competition = Http::withHeaders(['Ocp-Apim-Subscription-Key'=>$last_key])->get('https://api.sportsdata.io/v3/soccer/scores/json/CompetitionDetails/' . $id)->json();
 
-        // dump($areasArray);
+        dump($competition);
 
-           
         return view('areas.show', 
             [
-                // 'areas' => $areasArray,
                 // 'area_id' => $area_id,
                 // 'area_name' => $area_name
             ]);
