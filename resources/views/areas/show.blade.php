@@ -17,13 +17,68 @@
 		</ul>
 	</div>
 	<div class="competition_rounds">
-		<ul>
+		<ul class="flex bg-gray-400 text-white mt-2">
 			@foreach($competition['CurrentSeason']['Rounds'] as $round)
-			
-				<li>{{$round['Name']}}</li>
 				
+				<li class="p-2 ml-2 mr-2">{{$round['Name']}}</li>
+	
 			@endforeach
+			
 		</ul>
+
+		<div>
+			<h2 class="text-3xl p-4">{{$group_a[0]['Group']}}</h2>
+			<table>
+				<thead>
+					<tr>
+						<th>
+							
+						</th>
+						<th class="p-1">
+							<span>Games</span>
+						</th>
+						<th class="p-1">
+							<span>Wins</span>
+						</th>
+						<th class="p-1">
+							<span>Losses</span>
+						</th>
+						<th class="p-1">
+							<span>Draws</span>
+						</th>
+						<th class="p-1">
+							<span>Points</span>
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					
+					@foreach ($group_a as $team)
+						<tr>
+							<td>
+								<div class="border-b">{{$team['Name']}}</div> <br>
+							</td>
+							<td>
+								<div class="border-b text-center"><span class="m-auto">{{$team['Games']}}</span></div> <br>
+							</td>
+							<td>
+								<div class="border-b text-center"><span class="m-auto">{{$team['Wins']}}</span></div> <br>
+							</td>
+							<td>
+								<div class="border-b text-center"><span class="m-auto">{{$team['Losses']}}</span></div> <br>
+							</td>
+							<td>
+								<div class="border-b text-center"><span class="m-auto">{{$team['Draws']}}</span></div> <br>
+							</td>
+							<td>
+								<div class="border-b text-center"><span class="m-auto">{{$team['Points']}}</span></div> <br>
+							</td>
+						</tr>
+					@endforeach
+				</tbody>
+			</table>
+			
+		</div>
 	</div>
 </div>
 
@@ -37,25 +92,6 @@
 	}
 
 </style>
-
-{{-- <form action="{{ route('teams') }}" method="get">
-    <input type="hidden" name="comp_id" value="{{ $comp_id }}">
-    <button type="submit">Teams</button>
-</form> --}}
-
-{{-- <h1 class="mb-1 mt-1 text-4xl">Area:</h1>
-
-<div>
-    Area Id: {{$area_id}}
-</div>
-
-<div>
-    Area: {{$area_name}}
-</div> --}}
-
-
-
-
 
 
 @endsection

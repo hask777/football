@@ -94,8 +94,7 @@ class AreasController extends Controller
         foreach ($round_arr as $round_id) {
             
             $round_standings = Http::withHeaders(['Ocp-Apim-Subscription-Key'=>$old_key])->get('https://api.sportsdata.io/v3/soccer/scores/json/Standings/'. $round_id)->json();
-                dump($round_standings);
-    
+        
             foreach ($round_standings as $item) {
                 
                 if($item['Group'] == 'Group A'){
@@ -133,13 +132,13 @@ class AreasController extends Controller
         }
 
         dump($group_A);
-        dump($group_B);
-        dump($group_C);
-        dump($group_D);
-        dump($group_E);
-        dump($group_F);
-        dump($group_G);
-        dump($group_H);
+        // dump($group_B);
+        // dump($group_C);
+        // dump($group_D);
+        // dump($group_E);
+        // dump($group_F);
+        // dump($group_G);
+        // dump($group_H);
 
 
         // foreach ($round_arr as $round_id) {
@@ -153,6 +152,7 @@ class AreasController extends Controller
         return view('areas.show', 
             [
                 'competition' => $competition,
+                'group_a' => $group_A,
             ]
         );
     }
