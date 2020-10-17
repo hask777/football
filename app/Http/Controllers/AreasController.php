@@ -15,9 +15,9 @@ class AreasController extends Controller
     public function index()
     {
         $old_key = 'f7b0c7419d204f299f59e646b45ca563';
-        $last_key = '462593266ebe41aea83378076b88c07d';
+        $last_key = '7990768b98ef4df888949b78c81916bb';
 
-        $areas = Http::withHeaders(['Ocp-Apim-Subscription-Key'=>$old_key])->get('https://api.sportsdata.io/v3/soccer/scores/json/Areas')->json();
+        $areas = Http::withHeaders(['Ocp-Apim-Subscription-Key'=>$last_key])->get('https://api.sportsdata.io/v3/soccer/scores/json/Areas')->json();
         // dd($areas);
 
         foreach($areas as $area){
@@ -65,12 +65,12 @@ class AreasController extends Controller
     public function show($id)
     {
         $old_key = 'f7b0c7419d204f299f59e646b45ca563';
-        $last_key = '462593266ebe41aea83378076b88c07d';
+        $last_key = '7990768b98ef4df888949b78c81916bb';
 
         // include 'inc/areas/http.php'; 
         // include 'inc/areas/dump.php';
    
-    $competition = Http::withHeaders(['Ocp-Apim-Subscription-Key'=>$old_key])->get('https://api.sportsdata.io/v3/soccer/scores/json/CompetitionDetails/' . $id)->json();
+    $competition = Http::withHeaders(['Ocp-Apim-Subscription-Key'=>$last_key])->get('https://api.sportsdata.io/v3/soccer/scores/json/CompetitionDetails/' . $id)->json();
 
     // dump($competition);
 
@@ -93,10 +93,10 @@ class AreasController extends Controller
 
         foreach ($round_arr as $round_id) {
             
-            $round_standings = Http::withHeaders(['Ocp-Apim-Subscription-Key'=>$old_key])->get('https://api.sportsdata.io/v3/soccer/scores/json/Standings/'. $round_id)->json();
+            $round_standings = Http::withHeaders(['Ocp-Apim-Subscription-Key'=>$last_key])->get('https://api.sportsdata.io/v3/soccer/scores/json/Standings/'. $round_id)->json();
         
             foreach ($round_standings as $item) {
-                
+               
                 if($item['Group'] == 'Group A'){
                     $group_A[] = $item;
                 }
@@ -131,16 +131,43 @@ class AreasController extends Controller
             }
         }
 
-        dump($group_A);
-        // dump($group_B);
-        // dump($group_C);
-        // dump($group_D);
-        // dump($group_E);
-        // dump($group_F);
-        // dump($group_G);
-        // dump($group_H);
+        $groups = [];
 
+        if (!empty($group_A)) {
+            $groups[] = $group_A;
 
+        }
+
+        if (!empty($group_B)) {
+            $groups[] = $group_B;
+        }
+
+        if (!empty($group_C)) {
+            $groups[] = $group_C;
+        }
+
+        if (!empty($group_D)) {
+            $groups[] = $group_D;
+        }
+
+        if (!empty($group_E)) {
+            $groups[] = $group_E;
+        }
+
+        if (!empty($group_F)) {
+            $groups[] = $group_F;
+        }
+
+        if (!empty($group_G)) {
+            $groups[] = $group_G;
+        }
+
+        if (!empty($group_H)) {
+            $groups[] = $group_H;
+        }
+
+        // dump($groups);
+        
         // foreach ($round_arr as $round_id) {
             
         //     $round_schedule = Http::withHeaders(['Ocp-Apim-Subscription-Key'=>$old_key])->get('https://api.sportsdata.io/v3/soccer/scores/json/Schedule/'. $round_id)->json();
@@ -152,7 +179,7 @@ class AreasController extends Controller
         return view('areas.show', 
             [
                 'competition' => $competition,
-                'group_a' => $group_A,
+                'groups' => $groups,
             ]
         );
     }
